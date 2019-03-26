@@ -6,6 +6,7 @@ import scipy.stats as st
 # https://www.ibm.com/support/knowledgecenter/ru/SSEP7J_10.1.1/com.ibm.swg.ba.cognos.ug_cr_rptstd.10.1.1.doc/c_id_obj_desc_tables.html
 
 def quartil(arr):
+    # квартили
     q1, q2, q3 = 0, 0, 0
     arr = sorted(arr)
     q2 = np.median(arr)
@@ -54,8 +55,18 @@ def interval(arr):
     # для математического ожидания
     t = 1.96    # аргумент функции Лапласса, при котором ее значение равно 0,95 / 2 = 0,475
     e = t * sem(arr)
-    m1_interval = (np.mean(arr) - e, np.mean(arr) + e)
-    return m1_interval
+    mean_interval = (np.mean(arr) - e, np.mean(arr) + e)
+
+    # для дисперсии
+    # Случайная ошибка дисперсии нижней границы
+    X2 = 129.5612 # Для количества степеней свободы k = 99 и p = (1-0.95)/2 = 0.025 по таблице распределения χ2
+    tH = (len(arr) - 1) * np.var(arr) / X2
+    # Случайная ошибка дисперсии верхней границы
+    X2 = 74.22193 # Для количества степеней свободы k = 99 и p = (1-0.95)/2 = 0.975 по таблице распределения χ2
+    tB = (len(arr) - 1) * np.var(arr) / X2
+    var_interval = (tH, tB)
+
+    return mean_interval, var_interval
 
 if __name__ == "__main__":
     stat = np.fromfile("sample.txt", dtype=int, sep=' ')
@@ -78,6 +89,9 @@ if __name__ == "__main__":
     # http://math.msu.su/~falin/files/Фалин_Г.И.,Фалин_А.И.(2011-Математика)Квартили_в_описательной_статистике.pdf
     print("Квартили:", quartil(stat), (np.percentile(stat, 25), np.percentile(stat, 50), np.percentile(stat, 75)))
 
+    sns.boxplot(stat)
+    plt.show()
+
     print("Стандартное отклонение:", stdev(stat))
 
     print("Эксцесс:", kurtosis(stat), st.kurtosis(stat))
@@ -88,4 +102,4 @@ if __name__ == "__main__":
     print("Пирсон:", pirson(stat))
 
     print("Доверительные интервалы: для мат. ожидания:", interval(stat))
-
+    print(st.t.interval(0.95, len(stat)-1, loc=np.mean(stat), scale=st.sem(stat)))
