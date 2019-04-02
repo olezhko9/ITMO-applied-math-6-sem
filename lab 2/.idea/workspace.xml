@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23efae58-82b2-44a1-b3ba-978564e9c32b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,22 +21,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1839" />
+          <entry key="py" value="2125" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1839" />
+          <entry key="Python" value="2125" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="3" />
+          <entry key="py" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="3" />
+          <entry key="Python" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -45,14 +46,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lab2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-297">
-              <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+            <state relative-caret-position="197">
+              <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1554232776056" expanded="true" signature="113:118" ph="..." />
-                <marker date="1554232776056" expanded="true" signature="363:449" ph="..." />
-                <marker date="1554232776056" expanded="true" signature="940:1285" ph="..." />
-                <marker date="1554232776056" expanded="true" signature="1018:1248" ph="..." />
+                <marker date="1554241559536" expanded="true" signature="145:150" ph="..." />
+                <marker date="1554241559536" expanded="true" signature="395:481" ph="..." />
+                <marker date="1554241559536" expanded="true" signature="1019:1517" ph="..." />
+                <marker date="1554241559536" expanded="true" signature="1116:1346" ph="..." />
               </folding>
             </state>
           </provider>
@@ -203,16 +204,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="1223" column="4" selection-start-line="1223" selection-start-column="4" selection-end-line="1223" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lab2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-297">
-          <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+        <state relative-caret-position="197">
+          <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1554232776056" expanded="true" signature="113:118" ph="..." />
-            <marker date="1554232776056" expanded="true" signature="363:449" ph="..." />
-            <marker date="1554232776056" expanded="true" signature="940:1285" ph="..." />
-            <marker date="1554232776056" expanded="true" signature="1018:1248" ph="..." />
+            <marker date="1554241559536" expanded="true" signature="145:150" ph="..." />
+            <marker date="1554241559536" expanded="true" signature="395:481" ph="..." />
+            <marker date="1554241559536" expanded="true" signature="1019:1517" ph="..." />
+            <marker date="1554241559536" expanded="true" signature="1116:1346" ph="..." />
           </folding>
         </state>
       </provider>

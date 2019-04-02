@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import matplotlib.pyplot as plt
 random.seed(2019)
 
 
@@ -29,13 +30,15 @@ def vector_stdev(va, vb):
 def limit_dist_by_computing(transition_matrix, stationary_dist, eps=1e-5):
     m_stationary_dist = stationary_dist ** 2
     stdev = vector_stdev(stationary_dist, m_stationary_dist)
+    std_arr = []
     m = 0
     while stdev > eps:
         m_stationary_dist = stationary_dist @ transition_matrix
         m += 1
         stdev = vector_stdev(stationary_dist, m_stationary_dist)
+        std_arr.append(stdev)
         stationary_dist = m_stationary_dist
-    return stationary_dist, m
+    return stationary_dist, m, np.array(std_arr)
 
 
 def limit_dist_by_analytic(transition_matrix):
@@ -52,22 +55,29 @@ def limit_dist_by_analytic(transition_matrix):
 
 if __name__ == '__main__':
     n = 8
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+    fig.suptitle('Изменение среднеквадратического отклонения', fontsize=16)
     Markov_matrix = get_random_transition_matrix(n)
-    print("Матрица переходов\n", Markov_matrix)
+    print("Матрица переходов\n", np.around(Markov_matrix, 3))
 
     # Численный способ
     start_dist_1 = get_random_norm_vector(n)
 
-    print("\nВектор начального состояния 1\n", start_dist_1)
+    print("\nВектор начального состояния 1\n", np.around(start_dist_1, 3))
     print("\nЧисленное распределение 1")
-    print(limit_dist_by_computing(Markov_matrix, start_dist_1))
+    finish_dist_1, m, stdarr = limit_dist_by_computing(Markov_matrix, start_dist_1)
+    print(np.around(finish_dist_1, 3), m)
+    ax1.plot(np.arange(0, len(stdarr)), stdarr)
 
     start_dist_2 = get_random_norm_vector(n)
-    print("\nВектор начального состояния 2\n", start_dist_2)
+    print("\nВектор начального состояния 2\n", np.around(start_dist_2, 3))
     print("\nЧисленное распределение 2")
-    print(limit_dist_by_computing(Markov_matrix, start_dist_2))
+    finish_dist_2, m, stdarr = limit_dist_by_computing(Markov_matrix, start_dist_2)
+    print(np.around(finish_dist_2, 3), m)
+    ax2.plot(np.arange(0, len(stdarr)), stdarr)
+    plt.show()
 
-    print("\nМатрица в степени m\n", np.linalg.matrix_power(Markov_matrix, n))
+    print("\nМатрица в степени m\n", np.around(np.linalg.matrix_power(Markov_matrix, n), 3))
 
     # Аналитический способ
-    print("\nАналитическое распределение\n", limit_dist_by_analytic(Markov_matrix))
+    print("\nАналитическое распределение\n", np.around(limit_dist_by_analytic(Markov_matrix), 3))
