@@ -5,6 +5,7 @@ random.seed(2019)
 
 
 def get_random_norm_vector(n):
+    """Возвращает нормированный вектор длины n"""
     a = []
     norm_sum = 1.0
     for i in range(n - 1):
@@ -13,21 +14,25 @@ def get_random_norm_vector(n):
         a.append(x)
     a.append(norm_sum)
     a = np.array(a)
-    # np.random.shuffle(a)
+    np.random.shuffle(a)
     return a
 
 
 def get_random_transition_matrix(n):
+    """Возвращает квадратную матрицу размерности n, состояющую из нормированных векторов"""
     g = []
     for i in range(n):
         g.append(get_random_norm_vector(n))
     return np.array(g)
 
+
 def vector_stdev(va, vb):
+    """Среднеквадратическое отклонение между векторами"""
     return np.sqrt(sum((b - a)**2 for b, a in zip(vb, va)))
 
 
 def limit_dist_by_computing(transition_matrix, stationary_dist, eps=1e-5):
+    """Численное нахождение стационарного состояния"""
     m_stationary_dist = stationary_dist ** 2
     stdev = vector_stdev(stationary_dist, m_stationary_dist)
     std_arr = []
@@ -42,6 +47,7 @@ def limit_dist_by_computing(transition_matrix, stationary_dist, eps=1e-5):
 
 
 def limit_dist_by_analytic(transition_matrix):
+    """Аналитическое нахождение стационарного состояния"""
     A = (transition_matrix - np.eye(n)).transpose()
     probability_dist = np.ones((1, n))
 
