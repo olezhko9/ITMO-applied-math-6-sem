@@ -48,6 +48,7 @@ def limit_dist_by_computing(transition_matrix, stationary_dist, eps=1e-5):
 
 def limit_dist_by_analytic(transition_matrix):
     """Аналитическое нахождение стационарного состояния"""
+    n = len(transition_matrix)
     A = (transition_matrix - np.eye(n)).transpose()
     probability_dist = np.ones((1, n))
 
