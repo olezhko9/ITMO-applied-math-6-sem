@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 # вариант 4
 # p = {
@@ -35,12 +36,6 @@ transition_matrix = np.array([
     np.array([0, 0, 0, p['lambda'], -2*p['nu']])
 ])
 
-# n = len(transition_matrix)
-# A = np.vstack((transition_matrix, np.ones((1, n))))
-# B = np.zeros(n + 1)
-# B[-1] = 1
-# s = np.linalg.solve(A, B)
-# print(s)
 
 def solve_stationary_probability(transition_matrix):
     """Аналитическое нахождение стационарного состояния"""
@@ -112,4 +107,21 @@ def euler_method(transition_matrix, start_condition, t=2):
 
 
 start_cond = np.array([1, 0, 0, 0, 0])
-print(euler_method(transition_matrix, start_cond, t=2))
+euler_steps = euler_method(transition_matrix, start_cond, t=2)
+print(euler_steps)
+
+
+def non_stationary_plot(steps):
+
+    xmin = 0
+    xmax = 2
+    dx = 0.05
+
+    xlist = np.arange(xmin, xmax + dx, dx)
+    for ylist in steps.T:
+        plt.plot(xlist, ylist)
+
+    plt.show()
+
+
+non_stationary_plot(euler_steps)
