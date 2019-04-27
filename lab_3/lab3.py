@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from lab_2 import markov_chain
 
+np.set_printoptions(precision=5, suppress=True)
 # вариант 4
 p = {
     'lambda': 7.92,     # Интенсивность входящего потока заявок
@@ -106,7 +107,7 @@ def euler_method(transition_matrix, start_condition, stationary_prob):
 
 start_cond = np.array([1, 0, 0, 0, 0])
 euler_steps = euler_method(transition_matrix, start_cond, stationary)
-# print(euler_steps)
+print(euler_steps)
 
 
 def non_stationary_plot(steps, labels):
